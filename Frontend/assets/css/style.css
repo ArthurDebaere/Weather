@@ -1,0 +1,85 @@
+h1,h2,h3 {
+    text-align: center;
+}
+
+h3 {
+    padding-bottom: 15px;
+}
+img{
+    width:160px;
+    height:160px;
+    padding-top:5%;
+    padding-left:25%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.citybtn{ /*geeft deze knoppen een ongeveer dezelfde look als van in JqueryMobile, het probleem was dat die buttons dynamisch toegevoegd worden en de JqueryMobile css niet wil niet altijd laden*/
+    width:100%;
+    border:1px solid #492069;
+    background-color:#f7931e;
+    height:50px;
+    margin-bottom:5px;
+    border-radius:7px;
+    color:white;
+    font-weight:bold;
+}
+#removebtn.citybtn-remove{
+    display:none;
+    border-radius:7px;
+    width:28%;
+    border:1px solid black;
+    height:50px;
+    background-color:red;
+    color:white;
+    font-weight:bold;
+}
+#registererror,#loginerror{
+    color:red;
+}
+#weatherdata{
+    font-size:17px;
+}
+em{
+    font-weight:bold;
+}
+aside{
+    text-align:right;
+}
+.hide{
+    display:none;
+}
+.screensize{
+    background-image: url("../icons/fullscreen.svg");
+    width:35px;
+    height:35px;
+    float:right;
+    margin-right:20px;
+    cursor:pointer;
+}
+.screensize.fullscreen-exit{
+    background-image: url("../icons/exit-fullscreen.svg");
+    width:35px;
+    height:35px;
+    float:right;
+    margin-right:20px;
+    cursor:pointer;
+}
+#map {
+    height: 300px;
+    width:300px;
+
+    float:right;
+}
+.cityweather{
+    border: 1px solid dimgrey;;
+    border-radius:7px;
+    padding:15px;
+    margin-bottom:30px;
+}
+

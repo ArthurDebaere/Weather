@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/themes/weer.min.css"/>
+    <link rel="stylesheet" href="assets/css/themes/jquery.mobile.icons.min.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxCYjJDcfwDdCSu6b6lzYLlE3u4DifJUs"></script>
+</head>
+<body>
+
+<div data-role="page" id="home">
+    <header>
+        <h1>Persoonlijk weer</h1>
+    </header>
+    <main data-role="content">
+        <img src="assets/images/weer.png" />
+        <a href="#register" data-transition="pop" data-role="button">Registreer</a>
+        <a href="#login" data-transition="pop" data-role="button">Log in</a>
+
+    </main>
+    <aside>
+        <div class=screensize >
+        </div>
+    </aside>
+
+</div>
+
+<div data-role="page" id="register">
+    <div data-role="content">
+        <header>
+            <h1>Registreer</h1>
+        </header>
+        <form method="post">
+            <label for="Rusername">Username:</label>
+            <input type="text" name="username" id="Rusername"/>
+
+            <label for="Rwachtwoord">Wachtwoord:</label>
+            <input type="password" name="wachtwoord" id="Rwachtwoord"/>
+
+            <label for="Remail">Email:</label>
+            <input type="text" name="email" id="Remail"/>
+
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <input type="checkbox" name="locatie" id="locatie" class="custom"/>
+                    <label for="locatie">Locatiegebruik</label>
+                </fieldset>
+            </div>
+        </form>
+        <div id="registererror"></div>
+        <a href="#home" data-transition="pop" data-role="button" data-inline="true" data-icon="arrow-l"></a>
+        <a href="#" id=registerBtn data-transition="pop" data-role="button" data-inline="true"
+           data-icon="arrow-r"></a>
+    </div>
+    <aside>
+        <div class=screensize >
+        </div>
+    </aside>
+</div>
+
+<div data-role="page" id="login">
+    <div data-role="content">
+        <header>
+            <h1>Log in</h1>
+        </header>
+        <form>
+            <label for="Lusername">Username:</label>
+            <input type="text" name="username" id="Lusername"/>
+
+            <label for="Lwachtwoord">Wachtwoord:</label>
+            <input type="password" name="wachtwoord" id="Lwachtwoord"/>
+
+        </form>
+        <p id="loginerror" class="hide">Username or password not correct !</p>
+
+        <a href="#home" data-transition="pop" data-role="button" data-inline="true" data-icon="arrow-l"></a>
+        <a href="" data-transition="pop" id="submitLogin" data-role="button" data-inline="true"
+           data-icon="arrow-r"></a>
+    </div>
+    <aside>
+        <div class=screensize >
+        </div>
+    </aside>
+</div>
+
+<div data-role="page" id="weather">
+    <header data-role="header" data-position="fixed">
+        <h1 id="message"></h1>
+        <a href="#navigationWeather" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all">Navigation</a>
+    </header>
+    <div id="map" class="hide"></div>
+    <div id="weatherdata" data-role="content">
+        <!--Hier komt telkens een nieuwe gegenereerde weerpagina op basis van de steden-->
+    </div>
+    <aside>
+        <p>&copy; openweathermap.org</p>
+    </aside>
+    <div data-role="panel" id="navigationWeather" data-position="left" data-display="push" data-theme="b">
+        <ul data-role="listview">
+            <li><a href="#steden" data-rel="close">Mijn steden</a></li>
+            <li><a class="btnLogout" data-rel="close">Log uit</a></li>
+            <li><a href="#over" data-rel="close">Over</a></li>
+        </ul>
+    </div>
+
+    <!-- dit is misschien geen goede oplossing om telkens de navigatie bij de verschillende pagina's te zetten, maar dit is de enigste manier waardoor mijn applicatie niet hapert in het menu !-->
+    <aside>
+        <div class=screensize >
+        </div>
+    </aside>
+</div>
+
+<div data-role="page" id="steden">
+    <header data-role="header" data-position="fixed">
+        <h1>Mijn steden</h1>
+        <a href="#navigationSteden" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all">Navigation</a>
+    </header>
+    <div data-role="content" id="citylist">
+        <!--Hier komt telkens een nieuwe gegenereerde lijst op basis van de steden-->
+    </div>
+    <div data-role="content" data-theme="b">
+        <a href="#weather" data-role="button" data-theme="a" data-inline="true">Terug</a>
+        <a href="#newcity" data-role="button" data-theme="a" data-inline="true">Nieuwe stad</a>
+    </div>
+    <div data-role="panel" id="navigationSteden" data-position="left" data-display="push" data-theme="b">
+        <ul data-role="listview">
+            <li><a href="#steden" data-rel="close">Mijn steden</a></li>
+            <li><a class="btnLogout" data-rel="close">Log uit</a></li>
+            <li><a href="#over" data-rel="close">Over</a></li>
+        </ul>
+    </div>
+    <!-- dit is misschien geen goede oplossing om telkens de navigatie bij de verschillende pagina's te zetten, maar dit is de enigste manier waardoor mijn applicatie niet hapert in het menu !-->
+    <aside>
+        <div class=screensize >
+        </div>
+    </aside>
+</div>
+
+<div data-role="page" data-dialog="true" id="over" data-close-btn="right">
+    <header data-role="header">
+        <h1>Over</h1>
+    </header>
+    <main data-role="main">
+        <h2>Gemaakt door</h2>
+        <h3>Arthur Debaere</h3>
+    </main>
+</div>
+
+<div data-role="page" data-dialog="true" id="newcity" data-close-btn="right">
+    <header data-role="header">
+        <h1>Nieuwe stad</h1>
+    </header>
+    <main data-role="main">
+        <form id="newcityform">
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="cityname">Naam:</label>
+                <input type="text" name="cityname" id="cityname" placeholder="Stadnaam"/>
+            </div>
+            <input data-theme="b" type="submit" value="opslaan" data-textvisible="true"/>
+        </form>
+    </main>
+</div>
+
+<div data-role="page" data-dialog="true" id="editCity" data-close-btn="right">
+    <header data-role="header">
+        <h1>Wijzig stad</h1>
+    </header>
+    <main data-role="main">
+        <form id="editcityform">
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="cityname">Naam:</label>
+                <input type="text" name="cityname" id="editcityname"/>
+            </div>
+            <input type="submit" data-theme="b" value="opslaan" data-textvisible="true" />
+        </form>
+    </main>
+</div>
+
+
+</body>
+</html>
